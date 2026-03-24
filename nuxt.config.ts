@@ -5,11 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  // Static site generation — no SSR
-  ssr: false,
-  nitro: {
-    preset: 'static',
-  },
+  ssr: true,
 
   // Tailwind CSS v4 entry point
   css: ['~/assets/css/main.css'],
