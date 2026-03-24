@@ -1,27 +1,7 @@
 <script setup lang="ts">
-const placeholderPosts = [
-  {
-    title: '20 Best Framer Portfolio Templates 2025',
-    description: 'Discover the top templates for portfolio sites that actually convert in 2025.',
-    date: 'Aug 6, 2025',
-    category: 'Web design',
-    slug: '20-best-framer-portfolio-templates-2025',
-  },
-  {
-    title: 'How to Build a SaaS Landing Page in Framer',
-    description: 'Step-by-step guide to creating high-converting SaaS pages with Framer.',
-    date: 'Jul 22, 2025',
-    category: 'Tutorials',
-    slug: 'how-to-build-saas-landing-page-framer',
-  },
-  {
-    title: 'Framer vs Webflow: Which One Should You Use?',
-    description: 'An honest comparison of two popular no-code website builders.',
-    date: 'Jul 10, 2025',
-    category: 'Insights',
-    slug: 'framer-vs-webflow-comparison',
-  },
-]
+const { all } = useBlog()
+
+const posts = all().slice(0, 3)
 </script>
 
 <template>
@@ -36,12 +16,13 @@ const placeholderPosts = [
       <!-- Blog grid -->
       <div class="grid grid-cols-1 gap-6 tablet:grid-cols-2 desktop:grid-cols-3">
         <UiBlogCard
-          v-for="post in placeholderPosts"
+          v-for="post in posts"
           :key="post.slug"
           :title="post.title"
           :description="post.description"
           :date="post.date"
           :category="post.category"
+          :image="post.image"
           :to="`/blog/${post.slug}`"
         />
       </div>
