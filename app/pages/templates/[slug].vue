@@ -4,29 +4,20 @@ import { PhArrowRight, PhEye, PhFramerLogo } from '@phosphor-icons/vue'
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { data: template } = await useAsyncData(`template-${slug}`, () =>
-  queryCollection('templates')
-    .where('slug', '=', slug)
-    .first()
-)
+const { query } = useTemplates()
+const template = query().where('slug', '=', slug).first()
 
-if (!template.value) {
+if (!template) {
   throw createError({ statusCode: 404, statusMessage: 'Template not found' })
 }
 
-useHead({ title: `${template.value.title} — ${template.value.subtitle || 'Stylokit'}` })
+useHead({ title: `${template.title} — ${template.subtitle || 'Stylokit'}` })
 
 // Get related templates (same platform, excluding current)
-const { data: relatedTemplates } = await useAsyncData(`related-${slug}`, () =>
-  queryCollection('templates')
-    .where('platform', '=', template.value!.platform)
-    .where('slug', '!=', slug)
-    .limit(4)
-    .all()
-)
+const relatedTemplates = query().where('platform', '=', template.platform).where('slug', '!=', slug).limit(4).all()
 
 const platformLabel = computed(() => {
-  const p = template.value?.platform
+  const p = template?.platform
   if (p === 'framer') return 'Framer'
   if (p === 'nuxt') return 'Nuxt'
   if (p === 'figma') return 'Figma'

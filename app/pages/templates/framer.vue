@@ -8,17 +8,14 @@ const categories = [
   'eCommerce', 'Course', 'Landing', 'Inspirations', 'Brand Guidelines',
 ]
 
-const { data: allTemplates } = await useAsyncData('framer-all', () =>
-  queryCollection('templates')
-    .where('platform', '=', 'framer')
-    .all()
-)
+const { query } = useTemplates()
+const allTemplates = query().where('platform', '=', 'framer').all()
 
 const filteredTemplates = computed(() => {
-  if (!allTemplates.value) return []
-  if (activeCategory.value === 'All') return allTemplates.value
-  if (activeCategory.value === 'Free') return allTemplates.value.filter(t => t.isFree)
-  return allTemplates.value.filter(t => t.category === activeCategory.value)
+  if (!allTemplates) return []
+  if (activeCategory.value === 'All') return allTemplates
+  if (activeCategory.value === 'Free') return allTemplates.filter(t => t.isFree)
+  return allTemplates.filter(t => t.category === activeCategory.value)
 })
 </script>
 

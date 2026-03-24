@@ -1,10 +1,6 @@
 <script setup lang="ts">
-const { data: templates } = await useAsyncData('featured-templates', () =>
-  queryCollection('templates')
-    .where('featured', '=', true)
-    .limit(4)
-    .all()
-)
+const { query } = useTemplates()
+const templates = query().where('featured', '=', true).limit(4).all()
 </script>
 
 <template>

@@ -1,11 +1,8 @@
 <script setup lang="ts">
 useHead({ title: 'Free Templates — Stylokit' })
 
-const { data: templates } = await useAsyncData('freebies-all', () =>
-  queryCollection('templates')
-    .where('isFree', '=', true)
-    .all()
-)
+const { query } = useTemplates()
+const templates = query().where('isFree', '=', true).all()
 </script>
 
 <template>

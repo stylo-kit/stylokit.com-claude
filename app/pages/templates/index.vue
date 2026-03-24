@@ -1,27 +1,10 @@
 <script setup lang="ts">
 useHead({ title: 'Templates — Stylokit' })
 
-const { data: framerTemplates } = await useAsyncData('framer-featured', () =>
-  queryCollection('templates')
-    .where('platform', '=', 'framer')
-    .where('isFree', '=', false)
-    .limit(4)
-    .all()
-)
-
-const { data: freebies } = await useAsyncData('freebies-featured', () =>
-  queryCollection('templates')
-    .where('isFree', '=', true)
-    .limit(4)
-    .all()
-)
-
-const { data: nuxtTemplates } = await useAsyncData('nuxt-featured', () =>
-  queryCollection('templates')
-    .where('platform', '=', 'nuxt')
-    .limit(4)
-    .all()
-)
+const { query } = useTemplates()
+const framerTemplates = query().where('platform', '=', 'framer').where('isFree', '=', false).limit(4).all()
+const freebies = query().where('isFree', '=', true).limit(4).all()
+const nuxtTemplates = query().where('platform', '=', 'nuxt').limit(4).all()
 </script>
 
 <template>

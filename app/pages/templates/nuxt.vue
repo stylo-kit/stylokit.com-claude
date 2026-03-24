@@ -1,11 +1,8 @@
 <script setup lang="ts">
 useHead({ title: 'Nuxt Templates — Stylokit' })
 
-const { data: templates } = await useAsyncData('nuxt-all', () =>
-  queryCollection('templates')
-    .where('platform', '=', 'nuxt')
-    .all()
-)
+const { query } = useTemplates()
+const templates = query().where('platform', '=', 'nuxt').all()
 </script>
 
 <template>
