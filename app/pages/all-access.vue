@@ -8,7 +8,7 @@ import {
   PhHeadset,
 } from '@phosphor-icons/vue'
 
-definePageMeta({ layout: 'dark' })
+// Light theme (default layout)
 
 useHead({ title: 'All Access — Stylokit' })
 
@@ -113,23 +113,23 @@ const includedItems: IncludedItem[] = [
     <section class="w-full">
       <div class="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-4 pt-16 text-center tablet:px-6 tablet:pt-24">
         <UiScrollReveal>
-          <h1 class="text-2xl leading-8 font-semibold text-white tablet:text-[56px] tablet:leading-[64px]">
-            All Stylokit products in one pass
+          <h1 class="text-2xl leading-8 font-semibold text-zinc-950 tablet:text-[56px] tablet:leading-[64px]">
+            All Stylokit <span class="text-zinc-400">products in one pass</span>
           </h1>
         </UiScrollReveal>
 
         <UiScrollReveal :delay="100">
-          <p class="max-w-[560px] text-[15px] leading-[22px] text-zinc-400 tablet:text-[17px] tablet:leading-6">
+          <p class="max-w-[560px] text-[15px] leading-[22px] text-zinc-500 tablet:text-[17px] tablet:leading-6">
             Gain full access to all current and future Stylokit Framer templates with one purchase. Build faster, design smarter.
           </p>
         </UiScrollReveal>
 
         <UiScrollReveal :delay="200">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-3">
             <span
               v-for="platform in platforms"
               :key="platform"
-              class="rounded-full border border-zinc-700 bg-zinc-800 px-4 py-1.5 text-xs font-medium text-zinc-300"
+              class="flex items-center gap-1.5 text-sm font-medium text-zinc-700"
             >
               {{ platform }}
             </span>
@@ -153,6 +153,7 @@ const includedItems: IncludedItem[] = [
               :license-label="tier.licenseLabel"
               :features="[...features]"
               :cta-link="tier.ctaLink"
+              :dark="tier.name === 'Unlimited'"
             />
           </div>
         </UiScrollReveal>
@@ -165,7 +166,7 @@ const includedItems: IncludedItem[] = [
               href="https://www.lemonsqueezy.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-zinc-400 underline underline-offset-2 transition-colors hover:text-white"
+              class="text-zinc-600 underline underline-offset-2 transition-colors hover:text-zinc-950"
             >
               Lemon Squeezy
             </a>
@@ -178,7 +179,7 @@ const includedItems: IncludedItem[] = [
     <section class="w-full">
       <div class="mx-auto flex max-w-[1400px] flex-col gap-8 px-4 py-12 tablet:gap-12 tablet:px-6 tablet:py-24">
         <UiScrollReveal>
-          <h2 class="text-center text-2xl leading-8 font-semibold text-white tablet:text-[36px] tablet:leading-[44px]">
+          <h2 class="text-center text-2xl leading-8 font-semibold text-zinc-950 tablet:text-[36px] tablet:leading-[44px]">
             What's included
           </h2>
         </UiScrollReveal>
@@ -189,17 +190,17 @@ const includedItems: IncludedItem[] = [
             :key="item.title"
             :delay="index * 80"
           >
-            <div class="flex flex-col gap-3 rounded-2xl bg-zinc-900 p-6 tablet:p-8">
+            <div class="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-6 tablet:p-8">
               <component
                 :is="item.icon"
                 :size="24"
                 weight="duotone"
-                class="text-neo-500"
+                class="text-neo-600"
               />
-              <h3 class="text-[17px] leading-6 font-medium text-white">
+              <h3 class="text-[17px] leading-6 font-medium text-zinc-950">
                 {{ item.title }}
               </h3>
-              <p class="text-[15px] leading-[22px] text-zinc-400">
+              <p class="text-[15px] leading-[22px] text-zinc-500">
                 {{ item.description }}
               </p>
             </div>
