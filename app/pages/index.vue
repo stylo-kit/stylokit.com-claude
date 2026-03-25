@@ -5,23 +5,11 @@ useHead({ title: 'Stylokit — Premium Framer, Nuxt & Figma Templates' })
 <template>
   <div>
     <SectionsHeroSection />
-    <UiScrollReveal>
-      <SectionsStatsSection />
-    </UiScrollReveal>
-    <UiScrollReveal>
-      <SectionsFeaturedSection />
-    </UiScrollReveal>
-    <UiScrollReveal>
-      <SectionsHowItWorksSection />
-    </UiScrollReveal>
-    <UiScrollReveal>
-      <SectionsTestimonialsSection />
-    </UiScrollReveal>
-    <UiScrollReveal>
-      <SectionsBlogSection />
-    </UiScrollReveal>
-    <UiScrollReveal>
-      <SectionsFaqSection />
-    </UiScrollReveal>
+    <SectionsStatsSection />
+    <SectionsFeaturedSection />
+    <SectionsHowItWorksSection />
+    <SectionsTestimonialsSection />
+    <SectionsBlogSection />
+    <SectionsFaqSection />
   </div>
 </template>

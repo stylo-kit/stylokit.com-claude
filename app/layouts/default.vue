@@ -5,7 +5,7 @@
     <!-- Spacer for fixed nav -->
     <div class="h-[72px]" />
 
-    <main>
+    <main class="overflow-hidden">
       <slot />
     </main>
 

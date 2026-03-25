@@ -2,24 +2,28 @@
 </script>
 
 <template>
-  <section class="relative w-full overflow-hidden">
-    <!-- Blue diagonal light ray streaks -->
-    <div class="pointer-events-none absolute top-[280px] -left-[100px] z-0 -rotate-[18deg]">
-      <div class="h-[3px] w-[900px] rounded-full bg-gradient-to-r from-transparent via-sky-400/50 to-transparent" />
-      <div class="mt-[6px] h-[2px] w-[850px] rounded-full bg-gradient-to-r from-transparent via-sky-300/40 to-transparent" />
-      <div class="mt-[8px] h-[4px] w-[950px] rounded-full bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
-      <div class="mt-[5px] h-[2px] w-[800px] rounded-full bg-gradient-to-r from-transparent via-sky-300/30 to-transparent" />
-      <div class="mt-[10px] h-[3px] w-[880px] rounded-full bg-gradient-to-r from-transparent via-sky-400/25 to-transparent" />
-    </div>
-    <!-- Subtle glow behind the rays -->
+  <section class="relative w-full">
+    <!-- Background gradient — 3D-transformed radial gradient -->
     <div
-      class="pointer-events-none absolute top-[250px] -left-[100px] z-0 h-[120px] w-[700px] -rotate-[18deg] opacity-[0.08]"
-      style="background: radial-gradient(ellipse at center, rgba(0,154,255,0.8) 0%, transparent 70%); filter: blur(20px)"
+      class="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-30"
+      style="background: radial-gradient(37% 31% at 48.2% 63.8%, #009aff 0%, #fff 100%); transform: perspective(2000px) rotate(-21deg) rotateX(24deg) rotateY(20deg)"
+    />
+    <!-- Light ray streaks image -->
+    <img
+      src="/images/hero-rays.png"
+      alt=""
+      class="pointer-events-none absolute z-[1] hidden tablet:block"
+      style="left: -337px; top: 262px; width: 600px; height: 448px"
+    />
+    <!-- Blue glow near CTA button -->
+    <div
+      class="pointer-events-none absolute z-[1] h-6 w-6 rounded-full"
+      style="background: #009aff; filter: blur(32px); top: 474px; left: 180px"
     />
 
     <!-- Hero text content -->
     <div class="relative z-10 mx-auto max-w-[1200px] px-4 pt-12 tablet:px-6 tablet:pt-24">
-      <div class="flex max-w-[660px] flex-col items-start gap-3 tablet:gap-4">
+      <div class="flex max-w-[720px] flex-col items-start gap-3 tablet:gap-4">
         <UiBadge label="No-Code Friendly" variant="border" />
         <h1 class="text-[28px] leading-[36px] font-semibold text-zinc-950 tablet:text-[56px] tablet:leading-[64px]">
           Premium framer templates for
@@ -46,7 +50,7 @@
     </div>
 
     <!-- Framer editor mockup - large, with perspective -->
-    <div class="relative z-10 mx-auto mt-8 max-w-[1400px] px-4 pb-8 tablet:mt-4 tablet:px-6 tablet:pb-16">
+    <div class="relative z-10 mx-auto mt-0 max-w-[1400px] px-4 pb-8 tablet:px-6 tablet:pb-16">
       <div
         class="relative mx-auto w-full"
         style="perspective: 1800px"
