@@ -1,5 +1,32 @@
 <script setup lang="ts">
-import { PhCaretDown, PhLightning, PhList, PhX } from '@phosphor-icons/vue'
+import {
+  PhArticle,
+  PhBrowsers,
+  PhCaretDown,
+  PhClockCounterClockwise,
+  PhFolder,
+  PhGridNine,
+  PhHandshake,
+  PhLightning,
+  PhList,
+  PhPuzzlePiece,
+  PhX,
+  PhHouse,
+  PhHeart,
+  PhStar,
+  PhUser,
+  PhGear,
+  PhBell,
+  PhChat,
+  PhEnvelope,
+  PhMagnifyingGlass,
+  PhCamera,
+  PhMusic,
+  PhMapPin,
+  PhCalendar,
+  PhShoppingCart,
+  PhBookmark,
+} from '@phosphor-icons/vue'
 
 const isMenuOpen = ref(false)
 const activeDropdown = ref<string | null>(null)
@@ -33,7 +60,10 @@ function closeDropdowns() {
       <!-- Desktop nav -->
       <nav class="mx-auto hidden max-w-[1200px] items-center gap-6 px-6 py-4 tablet:flex">
         <!-- Logo -->
-        <NuxtLink to="/" class="mr-auto flex items-center">
+        <NuxtLink to="/" class="mr-auto flex items-center gap-2">
+          <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-950">
+            <PhLightning :size="16" weight="fill" class="text-white" />
+          </div>
           <span class="text-xl font-semibold tracking-[-0.02em] text-zinc-950">Stylokit</span>
         </NuxtLink>
 
@@ -50,29 +80,125 @@ function closeDropdowns() {
               @mouseenter="toggleDropdown('products')"
             >
               Products
-              <PhCaretDown :size="14" weight="bold" class="text-zinc-800" />
+              <PhCaretDown
+                :size="14"
+                weight="bold"
+                class="text-zinc-800 transition-transform duration-200"
+                :class="activeDropdown === 'products' ? 'rotate-180' : ''"
+              />
             </button>
             <Transition
-              enter-active-class="transition duration-150 ease-out"
-              enter-from-class="scale-95 opacity-0"
-              enter-to-class="scale-100 opacity-100"
-              leave-active-class="transition duration-100 ease-in"
-              leave-from-class="scale-100 opacity-100"
-              leave-to-class="scale-95 opacity-0"
+              enter-active-class="transition duration-200 ease-out"
+              enter-from-class="translate-y-1 scale-[0.98] opacity-0"
+              enter-to-class="translate-y-0 scale-100 opacity-100"
+              leave-active-class="transition duration-150 ease-in"
+              leave-from-class="translate-y-0 scale-100 opacity-100"
+              leave-to-class="translate-y-1 scale-[0.98] opacity-0"
             >
               <div
                 v-if="activeDropdown === 'products'"
-                class="absolute top-full left-0 z-50 mt-2 w-[200px] rounded-lg border border-zinc-100 bg-white p-1 shadow-lg"
+                class="absolute top-full -left-32 z-50 mt-3 w-[420px] rounded-xl border border-zinc-200/80 bg-white p-2 shadow-xl shadow-zinc-900/10"
               >
-                <NuxtLink
-                  v-for="link in productLinks"
-                  :key="link.to"
-                  :to="link.to"
-                  class="block rounded-md px-3 py-2 text-[15px] leading-5 tracking-[0.3px] text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
-                  @click="closeDropdowns"
-                >
-                  {{ link.label }}
-                </NuxtLink>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <!-- Templates card -->
+                  <NuxtLink
+                    to="/templates"
+                    class="group rounded-lg p-2.5 transition-colors hover:bg-zinc-50"
+                    @click="closeDropdowns"
+                  >
+                    <div class="mb-2 flex items-center gap-2">
+                      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-50">
+                        <PhBrowsers :size="18" weight="duotone" class="text-purple-600" />
+                      </div>
+                      <span class="text-[14px] font-medium text-zinc-900">Templates</span>
+                      <span class="rounded-full bg-neo-500 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-zinc-950">New</span>
+                    </div>
+                    <div class="overflow-hidden rounded-md border border-zinc-100">
+                      <img
+                        src="/images/templates/stickify.webp"
+                        alt="Templates preview"
+                        class="h-[90px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  </NuxtLink>
+
+                  <!-- Components card -->
+                  <NuxtLink
+                    to="/components"
+                    class="group rounded-lg p-2.5 transition-colors hover:bg-zinc-50"
+                    @click="closeDropdowns"
+                  >
+                    <div class="mb-2 flex items-center gap-2">
+                      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50">
+                        <PhPuzzlePiece :size="18" weight="duotone" class="text-blue-600" />
+                      </div>
+                      <span class="text-[14px] font-medium text-zinc-900">Components</span>
+                      <span class="rounded-full bg-neo-500 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-zinc-950">New</span>
+                    </div>
+                    <div class="overflow-hidden rounded-md border border-zinc-100">
+                      <img
+                        src="/images/templates/3d-parallax-tilt.png"
+                        alt="Components preview"
+                        class="h-[90px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  </NuxtLink>
+
+                  <!-- Icon set card -->
+                  <NuxtLink
+                    to="/icon-set"
+                    class="group rounded-lg p-2.5 transition-colors hover:bg-zinc-50"
+                    @click="closeDropdowns"
+                  >
+                    <div class="mb-2 flex items-center gap-2">
+                      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50">
+                        <PhGridNine :size="18" weight="duotone" class="text-amber-600" />
+                      </div>
+                      <span class="text-[14px] font-medium text-zinc-900">Icon set</span>
+                      <span class="rounded-full bg-orange-50 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-orange-600">New update</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-1.5 rounded-md border border-zinc-100 bg-zinc-50 p-2.5">
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhHouse :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhHeart :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhStar :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhUser :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhGear :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhBell :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhChat :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                      <div class="flex items-center justify-center rounded bg-white p-1.5">
+                        <PhEnvelope :size="14" weight="duotone" class="text-zinc-500" />
+                      </div>
+                    </div>
+                  </NuxtLink>
+
+                  <!-- UI Kits card (disabled) -->
+                  <div class="cursor-not-allowed rounded-lg p-2.5 opacity-50">
+                    <div class="mb-2 flex items-center gap-2">
+                      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-100">
+                        <PhFolder :size="18" weight="duotone" class="text-zinc-400" />
+                      </div>
+                      <span class="text-[14px] font-medium text-zinc-400">UI Kits</span>
+                      <span class="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-medium leading-none text-zinc-400">Soon</span>
+                    </div>
+                    <div class="flex h-[60px] items-center justify-center rounded-md border border-dashed border-zinc-200 bg-zinc-50">
+                      <span class="text-[12px] text-zinc-300">Coming soon</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Transition>
           </div>
@@ -88,28 +214,48 @@ function closeDropdowns() {
               @mouseenter="toggleDropdown('resources')"
             >
               Resources
-              <PhCaretDown :size="14" weight="bold" class="text-zinc-800" />
+              <PhCaretDown
+                :size="14"
+                weight="bold"
+                class="text-zinc-800 transition-transform duration-200"
+                :class="activeDropdown === 'resources' ? 'rotate-180' : ''"
+              />
             </button>
             <Transition
-              enter-active-class="transition duration-150 ease-out"
-              enter-from-class="scale-95 opacity-0"
-              enter-to-class="scale-100 opacity-100"
-              leave-active-class="transition duration-100 ease-in"
-              leave-from-class="scale-100 opacity-100"
-              leave-to-class="scale-95 opacity-0"
+              enter-active-class="transition duration-200 ease-out"
+              enter-from-class="translate-y-1 scale-[0.98] opacity-0"
+              enter-to-class="translate-y-0 scale-100 opacity-100"
+              leave-active-class="transition duration-150 ease-in"
+              leave-from-class="translate-y-0 scale-100 opacity-100"
+              leave-to-class="translate-y-1 scale-[0.98] opacity-0"
             >
               <div
                 v-if="activeDropdown === 'resources'"
-                class="absolute top-full left-0 z-50 mt-2 w-[200px] rounded-lg border border-zinc-100 bg-white p-1 shadow-lg"
+                class="absolute top-full -left-6 z-50 mt-3 w-[200px] rounded-xl border border-zinc-200/80 bg-white p-1.5 shadow-xl shadow-zinc-900/10"
               >
                 <NuxtLink
-                  v-for="link in resourceLinks"
-                  :key="link.to"
-                  :to="link.to"
-                  class="block rounded-md px-3 py-2 text-[15px] leading-5 tracking-[0.3px] text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
+                  to="/blog"
+                  class="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[14px] font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
                   @click="closeDropdowns"
                 >
-                  {{ link.label }}
+                  <PhArticle :size="18" weight="duotone" class="text-zinc-400" />
+                  Blog
+                </NuxtLink>
+                <NuxtLink
+                  to="/affiliate"
+                  class="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[14px] font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
+                  @click="closeDropdowns"
+                >
+                  <PhHandshake :size="18" weight="duotone" class="text-zinc-400" />
+                  Affiliates
+                </NuxtLink>
+                <NuxtLink
+                  to="/changelog"
+                  class="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[14px] font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
+                  @click="closeDropdowns"
+                >
+                  <PhClockCounterClockwise :size="18" weight="duotone" class="text-zinc-400" />
+                  Changelog
                 </NuxtLink>
               </div>
             </Transition>
@@ -128,8 +274,11 @@ function closeDropdowns() {
 
       <!-- Mobile nav -->
       <nav class="flex items-center justify-between px-4 py-4 tablet:hidden">
-        <NuxtLink to="/" class="text-xl font-semibold tracking-[-0.02em] text-zinc-950">
-          Stylokit
+        <NuxtLink to="/" class="flex items-center gap-2">
+          <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-950">
+            <PhLightning :size="16" weight="fill" class="text-white" />
+          </div>
+          <span class="text-xl font-semibold tracking-[-0.02em] text-zinc-950">Stylokit</span>
         </NuxtLink>
         <button
           class="flex h-10 w-10 items-center justify-center rounded-md text-zinc-700"
