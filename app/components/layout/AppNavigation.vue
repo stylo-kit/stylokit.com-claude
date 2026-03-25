@@ -97,9 +97,12 @@ function closeDropdowns() {
             >
               <div
                 v-if="activeDropdown === 'products'"
-                class="absolute top-full -left-32 z-50 mt-3 w-[420px] rounded-xl border border-zinc-200/80 bg-white p-2 shadow-xl shadow-zinc-900/10"
+                class="absolute top-full -left-32 z-50 w-[420px] pt-3"
               >
-                <div class="grid grid-cols-2 gap-1.5">
+                <div
+                  class="rounded-xl border border-zinc-200/80 bg-white p-2 shadow-xl shadow-zinc-900/10"
+                >
+                  <div class="grid grid-cols-2 gap-1.5">
                   <!-- Templates card -->
                   <NuxtLink
                     to="/templates"
@@ -199,6 +202,7 @@ function closeDropdowns() {
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </Transition>
           </div>
@@ -231,8 +235,11 @@ function closeDropdowns() {
             >
               <div
                 v-if="activeDropdown === 'resources'"
-                class="absolute top-full -left-6 z-50 mt-3 w-[200px] rounded-xl border border-zinc-200/80 bg-white p-1.5 shadow-xl shadow-zinc-900/10"
+                class="absolute top-full -left-6 z-50 w-[200px] pt-3"
               >
+                <div
+                  class="rounded-xl border border-zinc-200/80 bg-white p-1.5 shadow-xl shadow-zinc-900/10"
+                >
                 <NuxtLink
                   to="/blog"
                   class="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[14px] font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
@@ -257,6 +264,7 @@ function closeDropdowns() {
                   <PhClockCounterClockwise :size="18" weight="duotone" class="text-zinc-400" />
                   Changelog
                 </NuxtLink>
+                </div>
               </div>
             </Transition>
           </div>
